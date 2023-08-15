@@ -31,6 +31,11 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get('/',(req,res)=>
+{
+  res.json({ message:"Heelo from backend"})
+})
+
 app.use("/api/auth", authRoute);
 app.use("/api/posts", adRoute);
 app.use("/api/service", serviceRoute);
@@ -44,8 +49,8 @@ app.use((err, req, res, next) => {
 
   return res.status(errorStatus).send(errorMessage);
 });
-
-app.listen(8800, () => {
+const PORT =process.env.PORT || 8800
+app.listen(PORT, () => {
   connect();
-  console.log("Backend server is running!");
+  console.log(`Backend server is running on ${PORT}...`);
 });
