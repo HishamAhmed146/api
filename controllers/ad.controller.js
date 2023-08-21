@@ -162,24 +162,6 @@ export const getuserAds = async (req, res, next) => {
 }
 
 
-// export const getAds = async (req, res, next) => {
-//   try {
-
-//     const q = req.query;
-//     const filters = {
-//       ...(q.userId && { userId: q.userId }),
-//       ...(q.search && { title: { $regex: q.search, $options: "i" } }),
-      
-//     };
-
-//     const ads = await Ad.find(filters).sort({ createdAt: -1 });
-//     res.status(200).send(ads);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-
     // ...(q.location && { location: city }),
     // const response = await axios.get(`https://ipapi.co/city/`);
     // const city = response.data;
