@@ -6,6 +6,9 @@ import authRoute from "./routes/auth.route.js";
 import serviceRoute from"./routes/service.route.js";
 import mailRoute from './routes/mail.route.js'
 import userRoute from './routes/user.route.js'
+import contactRoute from './routes/contact.route.js'
+import reportRoute from './routes/report.route.js'
+import coverRoute from './routes/cover.route.js'
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -31,16 +34,14 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/',(req,res)=>
-{
-  res.json({ message:"Heelo from backend"})
-})
-
 app.use("/api/auth", authRoute);
 app.use("/api/posts", adRoute);
 app.use("/api/service", serviceRoute);
 app.use("/api/mail", mailRoute);
 app.use("/api/user", userRoute);
+app.use("/api/report", reportRoute);
+app.use("/api/cover", coverRoute);
+app.use("/api/contact", contactRoute);
 
 
 app.use((err, req, res, next) => {
@@ -49,8 +50,8 @@ app.use((err, req, res, next) => {
 
   return res.status(errorStatus).send(errorMessage);
 });
-const PORT =process.env.PORT || 8800
-app.listen(PORT, () => {
+
+app.listen(8800, () => {
   connect();
-  console.log(`Backend server is running on ${PORT}...`);
+  console.log("Backend server is running!");
 });

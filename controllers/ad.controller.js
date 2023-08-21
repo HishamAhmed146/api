@@ -1,7 +1,7 @@
 import Ad from "../models/ad.model.js";
 import User from "../models/user.model.js";
 import createError from "../utils/createError.js";
-import axios from 'axios';
+//import axios from 'axios';
 
 export const createAd = async (req, res, next) => {
 

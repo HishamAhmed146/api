@@ -50,7 +50,7 @@ export const register = async (req, res, next) => {
 export const adminLogin = async (req, res, next) => {
   try {
    
-    const admin = await Admin.findOne({ email: req.body.email });
+    const admin = await Admin.findOne({ username: req.body.username });
     if (!admin) return next(createError(404, "Admin not found!"));
 
     const isCorrect = bcrypt.compareSync(req.body.password, admin.password);
