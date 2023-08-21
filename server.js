@@ -14,14 +14,15 @@ import cors from "cors";
 
 const app = express();
 dotenv.config();
-mongoose.set("strictQuery", true);
+mongoose.set("strictQuery", false);
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO);
-    console.log("Connected to mongoDB!");
+   const conn = await mongoose.connect(process.env.MONGO);
+    console.log(`Connected to mongoDB: ${conn.connection.host}`);
   } catch (error) {
     console.log(error);
+    process.exit(1);
   }
 };
 
@@ -53,5 +54,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 8800;
 app.listen(PORT, () => {
   connect();
-  console.log("Backend server is running!");
+  console.log(`Backend server is running on: ${PORT}`);
 });
